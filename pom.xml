@@ -6,18 +6,19 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.6.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.vvs</groupId>
 	<artifactId>webflux-backend-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>webflux-backend-app</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Spring Boot Weblux Project</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 
 	<dependencies>
+		<!-- Basic Web, Security and Database tools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
@@ -30,7 +31,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
-
+		<!-- JWT Security support -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
@@ -48,7 +49,7 @@
 			<version>0.11.2</version>
 			<scope>runtime</scope>
 		</dependency>
-
+		<!-- Development tools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -60,7 +61,7 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-
+		<!-- Testing tools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
