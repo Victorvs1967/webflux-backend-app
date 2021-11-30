@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Mono;
 
-@RestController
-@RequestMapping("/user")
+// @RestController
+// @RequestMapping("/user")
 public class UserController {
 
   @Autowired
   private UserService userService;
 
-  @GetMapping
-  public Mono<UserDto> getUser(Principal principal) {
-    return userService.getUser(principal.getName());
-  }
+  // @GetMapping
+  // public Mono<UserDto> getUser(Principal principal) {
+  //   return userService.getUser(principal.getName());
+  // }
   
 }
