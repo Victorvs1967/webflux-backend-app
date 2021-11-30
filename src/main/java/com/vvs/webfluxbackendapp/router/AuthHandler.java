@@ -2,7 +2,6 @@ package com.vvs.webfluxbackendapp.router;
 
 import com.vvs.webfluxbackendapp.entity.dto.ResponseDto;
 import com.vvs.webfluxbackendapp.entity.dto.UserDto;
-import com.vvs.webfluxbackendapp.errors.exception.UserAlreadyExistException;
 import com.vvs.webfluxbackendapp.service.AuthService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class AuthHandler {
   
   public Mono<ServerResponse> signup(ServerRequest request) {
     Mono<UserDto> user = request.bodyToMono(UserDto.class)
-    .flatMap(credentials -> authService.signup(credentials)
+    .flatMap(credentials -> authService.signup(credentials).cast(UserDto.class)
       .map(userDetails -> userDetails));
 
     return ServerResponse

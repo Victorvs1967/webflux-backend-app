@@ -1,17 +1,17 @@
-package com.vvs.webfluxbackendapp.controller;
+// package com.vvs.webfluxbackendapp.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+// import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.RequestMapping;
+// import org.springframework.web.bind.annotation.RestController;
 
-import reactor.core.publisher.Mono;
+// import reactor.core.publisher.Mono;
 
-@RestController
-@RequestMapping("/health")
-public class HealthController {
+// @RestController
+// @RequestMapping("/health")
+// public class HealthController {
   
-  @GetMapping
-  public Mono<String> check() {
-    return Mono.just("UP");
-  }
-}
+//   @GetMapping
+//   public Mono<String> check() {
+//     return Mono.just("UP");
+//   }
+// }
