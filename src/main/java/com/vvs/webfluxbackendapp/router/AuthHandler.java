@@ -32,11 +32,12 @@ public class AuthHandler {
   }
 
   public Mono<ServerResponse> login(ServerRequest request) {
-    String email = request.headers().firstHeader("email");
-    String password = request.headers().firstHeader("password");
+    // String email = request.headers().firstHeader("email");
+    // String password = request.headers().firstHeader("password");
     
-    Mono<?> response = Mono.just(new Object())
-      .flatMap(credentials -> authService.login(email, password)).cast(ResponseDto.class)
+    // Mono<?> response = Mono.just(new Object())
+    Mono<?> response = request.bodyToMono(UserDto.class)
+      .flatMap(credentials -> authService.login(credentials.getEmail(), credentials.getPassword())).cast(ResponseDto.class)
         .map(userDetails -> userDetails.getData());
 
     return ServerResponse

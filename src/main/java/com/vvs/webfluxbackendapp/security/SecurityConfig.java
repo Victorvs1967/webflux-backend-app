@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import reactor.core.publisher.Mono;
 
@@ -14,7 +17,7 @@ import reactor.core.publisher.Mono;
 public class SecurityConfig {
   
   private static final String[] WHITELISTED_AUTH_URLS = {
-    "/auth/signup", "/auth/login", "/webjars/**", "/v3/api-docs/**",
+    "/auth/signup", "/auth/login"
   };
 
   @Autowired
@@ -26,6 +29,7 @@ public class SecurityConfig {
   @Bean
   public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
     return http
+            .cors().configurationSource(createCorsConfigurationSource()).and()
             .exceptionHandling()
             .authenticationEntryPoint((shs, e) -> Mono.fromRunnable(() -> {
               shs.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
@@ -41,5 +45,23 @@ public class SecurityConfig {
             .pathMatchers(WHITELISTED_AUTH_URLS).permitAll()
             .anyExchange().authenticated()
             .and().build();
+  }
+
+  public CorsConfigurationSource createCorsConfigurationSource() {
+    
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    CorsConfiguration config = new CorsConfiguration();
+
+    // Possibly...
+    // config.applyPermitDefaultValues();
+
+    config.setAllowCredentials(true);
+    config.addAllowedOrigin("http://localhost:4200");
+    config.addAllowedHeader("*");
+    config.addAllowedMethod("*");
+
+    source.registerCorsConfiguration("/**", config);
+
+    return source;
   }
 }

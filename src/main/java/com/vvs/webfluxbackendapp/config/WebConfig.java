@@ -1,4 +1,4 @@
-package com.vvs.webfluxbackendapp.security;
+package com.vvs.webfluxbackendapp.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.CorsRegistry;
@@ -14,7 +14,7 @@ public class WebConfig implements WebFluxConfigurer {
     
     registry.addMapping("/**")
       .allowedOrigins("http://localhost:4200")
-      .allowedMethods("GET", "POST", "DELETE", "PUT")
+      .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS")
       .allowCredentials(true)
       .maxAge(3600);
   }
