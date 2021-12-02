@@ -16,9 +16,7 @@ import reactor.core.publisher.Mono;
 @EnableWebFluxSecurity
 public class SecurityConfig {
   
-  private static final String[] WHITELISTED_AUTH_URLS = {
-    "/auth/signup", "/auth/login"
-  };
+  private static final String[] WHITELISTED_AUTH_URLS = {"/auth/signup", "/auth/login"};
 
   @Autowired
   private AuthenticationManager authenticationManager;
